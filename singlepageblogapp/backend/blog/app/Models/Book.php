@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     //
-    protected $fillable =['book_name','category_id','content','nxb_id','author_id','republic','year','price','quantity'];
+    protected $fillable =['book_name','book_seo','category_id','content','nxb_id','author_id','republic','year','price','quantity'];
 
     public function category(){
         return $this->belongsTo('App\Models\Category');

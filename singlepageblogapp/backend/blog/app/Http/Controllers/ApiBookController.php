@@ -9,6 +9,7 @@ use App\Models\Image;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Helper\Helper;
 
 class ApiBookController extends Controller
 {
@@ -46,6 +47,7 @@ class ApiBookController extends Controller
         //
         $book = new Book();
         $book->book_name = $request->book_name;
+        $book->book_seo = create_slug($request->book_name);
         $book->category_id = $request->category_id;
         $book->author_id = $request->author_id;
         $book->content = $request->content;

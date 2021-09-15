@@ -17,6 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('book_name');
             // $table->string('book_image');
+            $table->string('book_seo');
             $table->integer('category_id');
             $table->text('content')->nullable();
             $table->integer('nxb_id')->nullable();

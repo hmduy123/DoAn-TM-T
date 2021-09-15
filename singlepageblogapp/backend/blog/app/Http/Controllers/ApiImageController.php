@@ -42,9 +42,9 @@ class ApiImageController extends Controller
         if ($request->hasFile('file')) {
             $message = "có file";
             $file = $request->file('file');
-
+            
             // đừng dùng hàm store,storage::url() ngu học toàn lưu thêm tên public// storage/tên hình ngu học
-            $path = $file->move('images', $file->getClientOriginalName());
+            $path = $file->move('images', md5($file->getClientOriginalName())+".jpg");
             $image = new Image();
             $image->url = $path;
             $image->priority = 1;
@@ -102,7 +102,7 @@ class ApiImageController extends Controller
             $file = $request->file('file');
 
             // đừng dùng hàm store,storage::url() ngu học toàn lưu thêm tên public || storage/tên hình ngu học
-            $path = $file->move('images', $file->getClientOriginalName());
+            $path = $file->move('images', md5($file->getClientOriginalName())+"_"+strtotime("now"));
             $image->url = $path;
             $image->save();
         } else {

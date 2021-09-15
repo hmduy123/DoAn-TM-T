@@ -33,6 +33,7 @@ class ApiUserController extends Controller
             $user = User::whereEmail($request->email)->first();
             $user->token = $user->createToken('app')->accessToken;
             return response()->json($user);
+            
         }
         return response()->json(['email' => 'Sai ten tai khoan hoac mat khau'], 401);
     }
